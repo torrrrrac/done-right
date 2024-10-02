@@ -19,6 +19,19 @@ let cardCount = 0;
 
 export default function List(props) {
 
+    const filteredTickets = props.ticketDetails.filter(ticket => 
+        ticket.status === props.listTitle || 
+        ticket.priority === props.listTitle || 
+        ticket.userObj.name === props.listTitle
+    );
+    
+    cardCount = filteredTickets.length;
+    
+    filteredTickets.map(ticket => (
+        <Card cardDetails={ticket} group={props.groupValue} />
+    ));
+
+
     console.log(props);
 
     const [bgColor, setBgColor] = useState('#b06e0c');
